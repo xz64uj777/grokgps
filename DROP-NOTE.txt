@@ -1,0 +1,2 @@
+Working tree for xz64uj777/grokgps (seeded from xz64uj777/gps on 2026-09-17).
+Source of truth for current app: gps-main / gps-current.zip

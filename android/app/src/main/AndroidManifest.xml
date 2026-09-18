@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCAL_NETWORK"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <application
+        android:name=".LaneGpsApplication"
+        android:allowBackup="true"
+        android:label="Lane GPS"
+        android:theme="@style/Theme.LaneGps"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ReplayActivity"
+            android:exported="true"
+            android:label="Lane GPS Trip Lab">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/csv"/>
+                <data android:mimeType="text/comma-separated-values"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="Lane GPS Diagnostics"/>
+
+        <activity
+            android:name=".NavigationActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".location.DriveTrackingService"
+            android:exported="false"
+            android:foregroundServiceType="location"
+            android:stopWithTask="false"/>
+    </application>
+</manifest>
